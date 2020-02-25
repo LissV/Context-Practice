@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ListContainer from './components/ListContainer';
+import ActionButton from './components/Button';
 
 const MainContainer = styled.div`
   background: rgb(60,49,143);
@@ -15,6 +16,7 @@ const App = () => {
   return (
     <MainContainer>
       <ListContainer />
+      <ActionButton />
     </MainContainer>
   );
 }
