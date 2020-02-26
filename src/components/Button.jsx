@@ -7,7 +7,7 @@ const ButtonWrapper = styled(Button)`
     background: #443691 !important;
     color: #ffffff !important;
     text-transform: uppercase;
-    width: 8%;
+    width: 150px;
 `;
 
 const ActionButton = () => {

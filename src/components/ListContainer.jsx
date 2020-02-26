@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
 
 const ListWrapper = styled.div`
   background: white;
-  height: 50%;
+  height: 500px;
   width: 400px;
   padding: 15px 0;
   margin: 0;
@@ -25,9 +25,9 @@ const ListItemsWrapper = styled(List)`
   height: calc(100% - 30px);
   margin: 8px 0 !important;
   ::-webkit-scrollbar { width: 1px; height: 3px;}
-  ::-webkit-scrollbar-track {  background-color: #999;}
+  ::-webkit-scrollbar-track {  background-color: #fff;}
   ::-webkit-scrollbar-track-piece { background-color: #ffffff;}
-  ::-webkit-scrollbar-thumb { height: 50px; background-color: #666; border-radius: 3px;}
+  ::-webkit-scrollbar-thumb { height: 50px; background-color: #fff; border-radius: 3px;}
 `;
 
 const ListItemWrapper = styled(ListItem)`
