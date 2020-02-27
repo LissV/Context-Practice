@@ -33,7 +33,8 @@ const App = () => {
   const [currentItems, setItems] = useState(items);
 
   const changeItem = (index) => {
-    const newItems = currentItems.splice(index, 1, {...currentItems[index], done: !currentItems[index].done});
+    let newItems = [...currentItems];
+    newItems[index] && newItems.splice(index, 1, {...newItems[index], done: !newItems[index].done});
     setItems(newItems);
   };
 
