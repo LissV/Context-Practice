@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import ListContainer from "./components/ListContainer";
-import ActionButton from "./components/Button";
+import DoneItems from "./DoneItems";
+import ToDoItems from "./ToDoItems";
+import { useState } from "react";
+import items from "./items";
+import ItemsContext from "./ItemsContext";
 
 const MainContainer = styled.div`
   background: rgb(60, 49, 143);
@@ -26,40 +29,27 @@ const Content = styled.div`
   justify-content: space-between;
 `;
 
-const ListWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ListTitle = styled.div`
-  color: #fff;
-  text-transform: uppercase;
-  font-family: Roboto !important;
-  font-weight: 800;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-`;
-
-const CustomActionButton = styled(ActionButton)`
-  margin-top: 20px !important;
-`;
-
 const App = () => {
+  const [currentItems, setItems] = useState(items);
+
+  const changeItem = (index) => {
+    const newItems = currentItems.splice(index, 1, {...currentItems[index], done: !currentItems[index].done});
+    setItems(newItems);
+  };
+
   return (
     <MainContainer>
-      <Content>
-        <ListWrapper>
-          <ListTitle>Tasks to do</ListTitle>
-          <ListContainer />
-          <CustomActionButton />
-        </ListWrapper>
-        <ListWrapper>
-          <ListTitle>Done tasks</ListTitle>
-          <ListContainer />
-          <CustomActionButton />
-        </ListWrapper>
-      </Content>
+      <ItemsContext.Provider
+        value={{
+          items: currentItems,
+          changeList: changeItem
+        }}
+      >
+        <Content>
+          <ToDoItems />
+          <DoneItems />
+        </Content>
+      </ItemsContext.Provider>
     </MainContainer>
   );
 };
