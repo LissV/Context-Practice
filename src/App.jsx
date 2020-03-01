@@ -3,7 +3,7 @@ import styled from "styled-components";
 import DoneItems from "./DoneItems";
 import ToDoItems from "./ToDoItems";
 import { useState } from "react";
-import items from "./items";
+import itemsList from "./items";
 import ItemsContext from "./ItemsContext";
 
 const MainContainer = styled.div`
@@ -30,20 +30,14 @@ const Content = styled.div`
 `;
 
 const App = () => {
-  const [currentItems, setItems] = useState(items);
-
-  const changeItem = (index) => {
-    let newItems = [...currentItems];
-    newItems[index] && newItems.splice(index, 1, {...newItems[index], done: !newItems[index].done});
-    setItems(newItems);
-  };
+  const [items, setItems] = useState(itemsList);
 
   return (
     <MainContainer>
       <ItemsContext.Provider
         value={{
-          items: currentItems,
-          changeList: changeItem
+          items,
+          setItems
         }}
       >
         <Content>
